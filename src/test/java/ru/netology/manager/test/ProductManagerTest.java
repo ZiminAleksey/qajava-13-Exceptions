@@ -30,8 +30,8 @@ public class ProductManagerTest {
         manager.removeById(2);
         manager.findAll();
 
-        Product[] actual = manager.searchBy("В");
-        Product[] expected = {book1, book2};
+        Product[] actual = manager.findById(3);
+        Product[] expected = {phone2};
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
@@ -69,9 +69,16 @@ public class ProductManagerTest {
         ProductRepository repo1 = new ProductRepository();
         ProductManager manager1 = new ProductManager(repo1);
 
+        manager1.add(book1);
+        manager1.add(phone1);
+        manager1.add(phone2);
+        manager1.add(phone3);
+        manager1.add(book2);
+        manager1.add(book3);
+
         Product[] actual1 = manager1.searchBy("В");
-        Product[] expected1 = {};
-        Assertions.assertArrayEquals(expected, actual);
+        Product[] expected1 = {book1, book2};
+        Assertions.assertArrayEquals(expected1, actual1);
 
     }
 }

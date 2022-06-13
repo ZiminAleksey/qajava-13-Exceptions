@@ -34,6 +34,11 @@ public class ProductManager {
         }
     }
 
+    public Product[] findById(int id) {
+        Product[] products = repository.findById(id);
+        return products;
+    }
+
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
